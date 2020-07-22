@@ -19,14 +19,26 @@ router.get("/azulemex", function (req, res) {
         // const brand = $(element).find(".produc-card__brand").text();
         const brand = $(element).children().first().text();
         const name = $(element).find(".product-card__name").text();
-        // const price = $(element).find(".product-card__price");
+
+        const _price = $(element).find(".product-card__price").text();
+
+        // count amount of "$" (if it has more than 2 it means it does have a discount)
+        const hasDiscount =
+          _price.split("").reduce((acc, cv) => {
+            if (cv === "$") acc++;
+            return acc;
+          }, 0) > 1
+            ? true
+            : false;
+
+        const price = _price.substr(_price.indexOf("$"), 10);
 
         // push to the results
-        results.push({ brand, name });
+        results.push({ brand, name, hasDiscount, price });
       });
 
-      console.log("====================");
-      console.log(results[0]);
+      // console.log("====================");
+      // console.log(results[0]);
 
       // After looping through each element found, log the results to the console
       // console.log(results);

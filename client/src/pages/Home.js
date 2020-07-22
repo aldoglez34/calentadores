@@ -84,7 +84,7 @@ const Home = () => {
                 <th className="py-3">Marca</th>
                 <th className="py-3">Nombre</th>
                 <th className="py-3">Precio</th>
-                <th className="py-3">Precio Oferta</th>
+                {/* <th className="py-3">Precio Oferta</th> */}
               </tr>
             </thead>
             <tbody>
@@ -93,6 +93,13 @@ const Home = () => {
                   <tr key={idx}>
                     <td>{p.brand}</td>
                     <td>{p.name}</td>
+                    {p.price ? (
+                      <td>{p.price}</td>
+                    ) : (
+                      <td>
+                        <strong className="text-danger">Agotado</strong>
+                      </td>
+                    )}
                   </tr>
                 );
               })}
