@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Table, Spinner } from "react-bootstrap";
+import { Button, Container, Table, Spinner, Badge } from "react-bootstrap";
 import API from "../utils/API";
 import Fade from "react-reveal/Fade";
 
@@ -92,7 +92,14 @@ const Home = () => {
                 return (
                   <tr key={idx}>
                     <td>{p.brand}</td>
-                    <td>{p.name}</td>
+                    <td>
+                      {p.name}
+                      {p.hasDiscount ? (
+                        <Badge variant="danger" className="ml-2">
+                          Oferta
+                        </Badge>
+                      ) : null}
+                    </td>
                     {p.price ? (
                       <td>{p.price}</td>
                     ) : (
