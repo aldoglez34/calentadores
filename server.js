@@ -3,7 +3,6 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const morgan = require("morgan");
-// const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 
@@ -29,17 +28,6 @@ app.use(routes);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-// connect to the Mongo DB
-// let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mathDB";
-// mongoose
-//   .connect(MONGODB_URI, {
-//     // autoIndex: false,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//   })
-//   .catch((error) => console.log(error));
 
 // start server
 app.listen(PORT, () => {
