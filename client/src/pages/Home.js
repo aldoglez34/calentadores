@@ -60,14 +60,14 @@ const Home = () => {
           >
             Azulemex
           </Button>
-          {/* <Button
+          <Button
             variant="outline-info"
             active={selected === "Gersa" ? true : false}
             onClick={scrapGersa}
             className="shadow-sm ml-2"
           >
             Gersa
-          </Button> */}
+          </Button>
         </div>
       </Fade>
       <div className="my-4">
