@@ -84,7 +84,7 @@ const Home = () => {
                 <th className="py-3">Marca</th>
                 <th className="py-3">Nombre</th>
                 <th className="py-3">Precio</th>
-                {/* <th className="py-3">Precio Oferta</th> */}
+                <th className="py-3">Precio Oferta</th>
               </tr>
             </thead>
             <tbody>
