@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Container, Table, Spinner } from "react-bootstrap";
 import API from "../utils/API";
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
 
 const Home = () => {
   const [selected, setSelected] = useState();
@@ -45,26 +47,30 @@ const Home = () => {
 
   return (
     <Container className="pt-4">
-      <h1 className="mt-4 display-4" style={{ fontWeight: 700 }}>
-        Precios de Calentadores
-      </h1>
+      <Fade>
+        <h1 className="mt-4 display-4" style={{ fontWeight: 700 }}>
+          Precios de Calentadores
+        </h1>
+      </Fade>
       <div className="mt-3 d-flex flex-row">
-        <Button
-          variant="outline-info"
-          active={selected === "Azulemex" ? true : false}
-          onClick={scrapAzulemex}
-          className="shadow-sm"
-        >
-          Azulemex
-        </Button>
-        {/* <Button
-          variant="outline-info"
-          active={selected === "Gersa" ? true : false}
-          onClick={scrapGersa}
-          className="shadow-sm ml-2"
-        >
-          Gersa
-        </Button> */}
+        <Slide bottom>
+          <Button
+            variant="outline-info"
+            active={selected === "Azulemex" ? true : false}
+            onClick={scrapAzulemex}
+            className="shadow-sm"
+          >
+            Azulemex
+          </Button>
+          {/* <Button
+            variant="outline-info"
+            active={selected === "Gersa" ? true : false}
+            onClick={scrapGersa}
+            className="shadow-sm ml-2"
+          >
+            Gersa
+          </Button> */}
+        </Slide>
       </div>
       <div className="my-4">
         {loading ? (
