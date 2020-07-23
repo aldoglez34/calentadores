@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Container,
-  Table,
-  Spinner,
-  Badge,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Button, Container, Table, Spinner, Row, Col } from "react-bootstrap";
 import API from "../utils/API";
 import Fade from "react-reveal/Fade";
 
@@ -52,6 +44,40 @@ const Home = () => {
       });
   };
 
+  const scrapGersaCalentadores = () => {
+    // set selected
+    setLoading(true);
+    setSelected("Gersa-Calentadores");
+
+    // scrap azulemex website
+    API.scrapGersaCalentadores()
+      .then((res) => {
+        setPrices(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Ocurrió un error con el proceso");
+      });
+  };
+
+  const scrapElSurtidorCalentadores = () => {
+    // set selected
+    setLoading(true);
+    setSelected("ElSurtidor-Calentadores");
+
+    // scrap azulemex website
+    API.scrapElSurtidorCalentadores()
+      .then((res) => {
+        setPrices(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Ocurrió un error con el proceso");
+      });
+  };
+
   return (
     <Container>
       {/* title */}
@@ -63,13 +89,17 @@ const Home = () => {
       {/* content */}
       <Row className="mt-4">
         {/* menu */}
-        <Col md={2}>
-          <h3>Azulemex</h3>
+        <Col md={2} className="d-flex flex-column">
+          {/* azulemex */}
+          <span style={{ fontWeight: 600, fontSize: "20px" }}>
+            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
+            azulemex.com
+          </span>
           <Button
             variant="outline-info"
             active={selected === "Azulemex-Calentadores" ? true : false}
             onClick={scrapAzulemexCalentadores}
-            className="shadow-sm"
+            className="shadow-sm mt-2"
             size="sm"
           >
             Calentadores
@@ -83,51 +113,96 @@ const Home = () => {
           >
             Pegazulejos
           </Button>
+          {/* gersa */}
+          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
+            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
+            gersamex.com
+          </span>
+          <Button
+            variant="outline-info"
+            active={selected === "Gersa-Calentadores" ? true : false}
+            onClick={scrapGersaCalentadores}
+            className="shadow-sm mt-2"
+            size="sm"
+          >
+            Calentadores
+          </Button>
+          {/* el surtidor */}
+          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
+            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
+            surtidor.com
+          </span>
+          <Button
+            variant="outline-info"
+            active={selected === "ElSurtidor-Calentadores" ? true : false}
+            onClick={scrapElSurtidorCalentadores}
+            className="shadow-sm mt-2"
+            size="sm"
+          >
+            Calentadores
+          </Button>
         </Col>
         {/* table */}
         <Col md={10}>
           <div>
             {loading ? (
               <div className="mt-4 pt-4 text-center">
+                <h5 className="text-info">Harvesting...</h5>
                 <Spinner animation="border" variant="info" role="status">
                   <span className="sr-only">Loading...</span>
                 </Spinner>
               </div>
             ) : prices ? (
-              <Table className="shadow-sm" striped bordered hover size="sm">
-                <thead>
-                  <tr>
-                    <th className="py-3 bg-dark text-light">Marca</th>
-                    <th className="py-3 bg-dark text-light">Nombre</th>
-                    <th className="py-3 bg-dark text-light">Precio</th>
-                    <th className="py-3 bg-dark text-light">PrecioOferta</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {prices.map((p, idx) => {
-                    return (
-                      <tr key={idx}>
-                        <td>{p.brand}</td>
-                        <td>
-                          {p.name}
-                          {p.hasDiscount ? (
-                            <Badge variant="danger" className="ml-1">
-                              Oferta
-                            </Badge>
-                          ) : null}
-                        </td>
-                        {p.price ? (
-                          <td>{p.price}</td>
-                        ) : (
+              <>
+                <h3>
+                  {selected}
+                  <span
+                    className="text-info ml-2"
+                    title="Productos encontrados"
+                  >
+                    ({prices.length})
+                  </span>
+                </h3>
+                <Table
+                  style={{ fontSize: "14px" }}
+                  className="shadow-sm"
+                  striped
+                  bordered
+                  hover
+                  size="sm"
+                >
+                  <thead>
+                    <tr>
+                      <th className="py-3 bg-dark text-light">Tipo</th>
+                      <th className="py-3 bg-dark text-light">Marca</th>
+                      <th className="py-3 bg-dark text-light">Nombre</th>
+                      <th className="py-3 bg-dark text-light">Precio</th>
+                      <th className="py-3 bg-dark text-light">PrecioOferta</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {prices.map((p, idx) => {
+                      return (
+                        <tr key={idx}>
+                          <td>{p.type}</td>
+                          <td>{p.brand}</td>
                           <td>
-                            <strong className="text-danger">Agotado</strong>
+                            {p.name}
+                            {p.hasDiscount ? (
+                              <i
+                                className="fas fa-tags ml-1 text-danger"
+                                title="En oferta"
+                              />
+                            ) : null}
                           </td>
-                        )}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </Table>
+                          <td>{p.price}</td>
+                          <td>{p.discountPrice ? p.discountPrice : null}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </Table>
+              </>
             ) : null}
           </div>
         </Col>
