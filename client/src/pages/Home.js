@@ -59,10 +59,9 @@ const Home = () => {
         <h1 className="mt-4 display-3" style={{ fontWeight: 700 }}>
           Web Scraping
         </h1>
-        <hr />
       </Fade>
       {/* content */}
-      <Row>
+      <Row className="mt-4">
         {/* menu */}
         <Col md={2}>
           <h3>Azulemex</h3>
