@@ -31,12 +31,24 @@ router.get("/calentadores", function (req, res) {
             ? true
             : false;
 
-        const price = _price.substr(_price.indexOf("$"), 10);
+        const price = _price.substr(_price.indexOf("$") + 1, 10).trim();
 
-        // const discountPrice = hasDiscount ? () : null
+        const _discountPrice = _price
+          .substr(_price.indexOf("$") + 1, 100)
+          .trim();
+
+        const discountPrice = _discountPrice
+          .substr(_discountPrice.indexOf("$") + 1, 100)
+          .trim();
 
         // push to the results
-        results.push({ brand, name, hasDiscount, price });
+        results.push({
+          brand,
+          name,
+          hasDiscount,
+          price,
+          discountPrice: hasDiscount ? discountPrice : null,
+        });
       });
 
       // After looping through each element found, log the results to the console
