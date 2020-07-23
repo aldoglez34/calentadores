@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const scrapRoutes = require("./api/scrapRoutes");
-router.use("/api/scrap", scrapRoutes);
+const azulemexRoutes = require("./api/azulemexRoutes");
+router.use("/api/scrap/azulemex", azulemexRoutes);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const axios = require("axios");
 
 // scrapAzulemexCalentadores()
 // matches with /api/scrap/azulemex/calentadores
-router.get("/azulemex/calentadores", function (req, res) {
+router.get("/calentadores", function (req, res) {
   axios
     .get("https://azulemex.com/collections/calentadores")
     .then((response) => {
@@ -39,9 +39,6 @@ router.get("/azulemex/calentadores", function (req, res) {
         results.push({ brand, name, hasDiscount, price });
       });
 
-      // console.log("====================");
-      // console.log(results[0]);
-
       // After looping through each element found, log the results to the console
       // console.log(results);
       res.send(results);
@@ -54,7 +51,7 @@ router.get("/azulemex/calentadores", function (req, res) {
 
 // scrapAzulemexPegazulejos()
 // matches with /api/scrap/azulemex/pegazulejos
-router.get("/azulemex/pegazulejos", function (req, res) {
+router.get("/pegazulejos", function (req, res) {
   axios
     .get("https://azulemex.com/collections/adhesivos-y-boquillas")
     .then((response) => {

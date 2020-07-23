@@ -5,6 +5,4 @@ export default {
     axios.get("/api/scrap/azulemex/calentadores"),
 
   scrapAzulemexPegazulejos: () => axios.get("/api/scrap/azulemex/pegazulejos"),
-
-  scrapGersa: () => axios.get("/api/scrap/gersa"),
 };
