@@ -92,7 +92,6 @@ const Home = () => {
         <Col md={2} className="d-flex flex-column">
           {/* azulemex */}
           <span style={{ fontWeight: 600, fontSize: "20px" }}>
-            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
             azulemex.com
           </span>
           <Button
@@ -115,7 +114,6 @@ const Home = () => {
           </Button>
           {/* gersa */}
           <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
-            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
             gersamex.com
           </span>
           <Button
@@ -129,7 +127,6 @@ const Home = () => {
           </Button>
           {/* el surtidor */}
           <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
-            <i className="fas fa-globe mr-1" style={{ fontSize: "17px" }} />
             surtidor.com
           </span>
           <Button
@@ -138,6 +135,20 @@ const Home = () => {
             onClick={scrapElSurtidorCalentadores}
             className="shadow-sm mt-2"
             size="sm"
+          >
+            Calentadores
+          </Button>
+          {/* home depot méxico */}
+          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
+            homedepot.com.mx
+          </span>
+          <Button
+            variant="outline-info"
+            active={selected === "ElSurtidor-Calentadores" ? true : false}
+            onClick={scrapElSurtidorCalentadores}
+            className="shadow-sm mt-2"
+            size="sm"
+            disabled
           >
             Calentadores
           </Button>
