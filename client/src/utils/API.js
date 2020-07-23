@@ -1,7 +1,10 @@
 import axios from "axios";
 
 export default {
-  scrapAzulemex: () => axios.get("/api/scrap/azulemex"),
+  scrapAzulemexCalentadores: () =>
+    axios.get("/api/scrap/azulemex/calentadores"),
+
+  scrapAzulemexPegazulejos: () => axios.get("/api/scrap/azulemex/pegazulejos"),
 
   scrapGersa: () => axios.get("/api/scrap/gersa"),
 };

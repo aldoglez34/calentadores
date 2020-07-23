@@ -10,13 +10,30 @@ const Home = () => {
 
   const [prices, setPrices] = useState();
 
-  const scrapAzulemex = () => {
+  const scrapAzulemexCalentadores = () => {
     // set selected
     setLoading(true);
-    setSelected("Azulemex");
+    setSelected("Azulemex-Calentadores");
 
     // scrap azulemex website (3 pages)
-    API.scrapAzulemex()
+    API.scrapAzulemexCalentadores()
+      .then((res) => {
+        setPrices(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Ocurrió un error con el proceso");
+      });
+  };
+
+  const scrapAzulemexPegazulejos = () => {
+    // set selected
+    setLoading(true);
+    setSelected("Azulemex-Pegazulejos");
+
+    // scrap azulemex website
+    API.scrapAzulemexPegazulejos()
       .then((res) => {
         setPrices(res.data);
         setLoading(false);
@@ -47,18 +64,27 @@ const Home = () => {
   return (
     <Container className="pt-4">
       <Fade>
+        {/* title */}
         <h1 className="mt-4 display-4" style={{ fontWeight: 700 }}>
-          Precios de Calentadores
+          Precios
         </h1>
-
+        {/* buttons */}
         <div className="mt-3 d-flex flex-row">
           <Button
             variant="outline-info"
-            active={selected === "Azulemex" ? true : false}
-            onClick={scrapAzulemex}
+            active={selected === "Azulemex-Calentadores" ? true : false}
+            onClick={scrapAzulemexCalentadores}
             className="shadow-sm"
           >
-            Azulemex
+            Azulemex-Calentadores
+          </Button>
+          <Button
+            variant="outline-info"
+            active={selected === "Azulemex-Pegazulejos" ? true : false}
+            onClick={scrapAzulemexPegazulejos}
+            className="shadow-sm ml-2"
+          >
+            Azulemex-Pegazulejos
           </Button>
           <Button
             variant="outline-info"
@@ -70,6 +96,7 @@ const Home = () => {
           </Button>
         </div>
       </Fade>
+      {/* content */}
       <div className="my-4">
         {loading ? (
           <div className="mt-4 pt-4 text-center">
