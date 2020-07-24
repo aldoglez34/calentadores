@@ -1,0 +1,29 @@
+.scroll {
+  //   opacity: 0.9 !important;
+
+  width: 3.2rem;
+  height: 3.2rem;
+
+  position: fixed;
+  right: 0.9rem;
+
+  bottom: 1em;
+
+  border-radius: 50%;
+  border: none;
+  outline: none !important;
+
+  cursor: pointer;
+
+  background-color: #17a2b8;
+  color: white;
+  padding: 8px;
+  font-size: 1.9rem;
+
+  &:hover {
+    background-color: #0f889b;
+    transition: 0.3s;
+    // background-color: #ffbc4f;
+    // color: white;
+  }
+}

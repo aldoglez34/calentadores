@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Table, Spinner, Row, Col } from "react-bootstrap";
 import API from "../utils/API";
 import Fade from "react-reveal/Fade";
+import ScrollButton from "../components/scrollbutton";
 
 const Home = () => {
   const [selected, setSelected] = useState();
@@ -241,6 +242,7 @@ const Home = () => {
           </div>
         </Col>
       </Row>
+      <ScrollButton scrollStepInPx={150} delayInMs={16.66} />
     </Container>
   );
 };
