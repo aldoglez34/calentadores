@@ -23,7 +23,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Ocurrió un error con el proceso");
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
       });
   };
 
@@ -40,7 +40,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Ocurrió un error con el proceso");
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
       });
   };
 
@@ -57,7 +57,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Ocurrió un error con el proceso");
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
       });
   };
 
@@ -74,7 +74,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Ocurrió un error con el proceso");
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
       });
   };
 
@@ -91,7 +91,7 @@ const Home = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Ocurrió un error con el proceso");
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
       });
   };
 
@@ -99,17 +99,18 @@ const Home = () => {
     <Container>
       {/* title */}
       <Fade>
-        <h1 className="mt-4 display-3" style={{ fontWeight: 700 }}>
+        <h1 className="mt-0 mt-md-4 display-3" style={{ fontWeight: 700 }}>
           Web Scraping
         </h1>
       </Fade>
       {/* content */}
-      <Row className="mt-4">
+      <Row className="mt-0 mt-md-4">
         {/* menu */}
         <Col md={2} className="d-flex flex-column">
           {/* azulemex */}
-          <span style={{ fontWeight: 600, fontSize: "20px" }}>
-            azulemex.com
+          <span style={{ fontWeight: 600, fontSize: "18px" }}>
+            <i className="fas fa-globe mr-1" style={{ fontSize: "15px" }} />
+            azulemex
           </span>
           <Button
             variant="outline-info"
@@ -130,8 +131,9 @@ const Home = () => {
             Pegazulejos
           </Button>
           {/* gersa */}
-          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
-            gersamex.com
+          <span style={{ fontWeight: 600, fontSize: "18px" }} className="mt-3">
+            <i className="fas fa-globe mr-1" style={{ fontSize: "15px" }} />
+            gersamex
           </span>
           <Button
             variant="outline-info"
@@ -143,8 +145,9 @@ const Home = () => {
             Calentadores
           </Button>
           {/* el surtidor */}
-          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
-            surtidor.com
+          <span style={{ fontWeight: 600, fontSize: "18px" }} className="mt-3">
+            <i className="fas fa-globe mr-1" style={{ fontSize: "15px" }} />
+            surtidor
           </span>
           <Button
             variant="outline-info"
@@ -156,8 +159,9 @@ const Home = () => {
             Calentadores
           </Button>
           {/* home depot méxico */}
-          <span style={{ fontWeight: 600, fontSize: "20px" }} className="mt-3">
-            homedepot.com.mx
+          <span style={{ fontWeight: 600, fontSize: "18px" }} className="mt-3">
+            <i className="fas fa-globe mr-1" style={{ fontSize: "15px" }} />
+            homedepot
           </span>
           <Button
             variant="outline-info"
@@ -170,7 +174,7 @@ const Home = () => {
           </Button>
         </Col>
         {/* table */}
-        <Col md={10} className="mt-4 mt-md-0">
+        <Col md={10} className="mt-4 mt-md-0 mb-3">
           <div>
             {loading ? (
               <div className="mt-4 pt-4 text-center">
