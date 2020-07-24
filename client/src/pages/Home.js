@@ -78,6 +78,23 @@ const Home = () => {
       });
   };
 
+  const scrapHomeDepotCalentadores = () => {
+    // set selected
+    setLoading(true);
+    setSelected("HomeDepot-Calentadores");
+
+    // scrap azulemex website
+    API.scrapHomeDepotCalentadores()
+      .then((res) => {
+        setPrices(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Ocurrió un error con el proceso");
+      });
+  };
+
   return (
     <Container>
       {/* title */}
@@ -144,17 +161,16 @@ const Home = () => {
           </span>
           <Button
             variant="outline-info"
-            active={selected === "ElSurtidor-Calentadores" ? true : false}
-            onClick={scrapElSurtidorCalentadores}
+            active={selected === "HomeDepot-Calentadores" ? true : false}
+            onClick={scrapHomeDepotCalentadores}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Calentadores
           </Button>
         </Col>
         {/* table */}
-        <Col md={10}>
+        <Col md={10} className="mt-4 mt-md-0">
           <div>
             {loading ? (
               <div className="mt-4 pt-4 text-center">
@@ -175,6 +191,7 @@ const Home = () => {
                   </span>
                 </h3>
                 <Table
+                  responsive
                   style={{ fontSize: "14px" }}
                   className="shadow-sm"
                   striped

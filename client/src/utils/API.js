@@ -19,4 +19,10 @@ export default {
   // ==============================================
   scrapElSurtidorCalentadores: () =>
     axios.get("/api/scrap/elsurtidor/calentadores"),
+
+  // ==============================================
+  // HOME DEPOT
+  // ==============================================
+  scrapHomeDepotCalentadores: () =>
+    axios.get("/api/scrap/homedepot/calentadores"),
 };

@@ -9,4 +9,7 @@ router.use("/api/scrap/gersa", gersaRoutes);
 const elsurtidorRoutes = require("./api/elsurtidorRoutes");
 router.use("/api/scrap/elsurtidor", elsurtidorRoutes);
 
+const homedepotRoutes = require("./api/homedepotRoutes");
+router.use("/api/scrap/homedepot", homedepotRoutes);
+
 module.exports = router;
