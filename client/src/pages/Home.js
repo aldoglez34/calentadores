@@ -150,7 +150,6 @@ const Home = () => {
             onClick={scrapAzulemexCalentadores}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Calentadores
           </Button>
@@ -160,7 +159,6 @@ const Home = () => {
             onClick={scrapAzulemexPegazulejos}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Pegazulejos
           </Button>
@@ -175,7 +173,6 @@ const Home = () => {
             onClick={scrapGersaCalentadores}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Calentadores
           </Button>
@@ -190,7 +187,6 @@ const Home = () => {
             onClick={scrapElSurtidorCalentadores}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Calentadores
           </Button>
@@ -205,7 +201,6 @@ const Home = () => {
             onClick={scrapHomeDepotCalentadores}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Calentadores
           </Button>
@@ -215,7 +210,6 @@ const Home = () => {
             onClick={scrapHomeDepotAdhesivos}
             className="shadow-sm mt-2"
             size="sm"
-            disabled
           >
             Adhesivos
           </Button>

@@ -282,7 +282,7 @@ router.get("/calentadores", function (req, res) {
 // matches with /api/scrap/homedepot/adhesivos
 router.get("/adhesivos", function (req, res) {
   const urls = [
-    "https://www.homedepot.com.mx/SearchDisplay?categoryId=&storeId=10351&catalogId=10101&langId=-5&sType=SimpleSearch&resultCatEntryType=2&showResultsPage=true&searchSource=Q&pageView=&beginIndex=0&pageSize=450&searchTerm=adhesivo#facet:&productBeginIndex:0&facetLimit:&orderBy:&pageView:grid&minPrice:&maxPrice:&pageSize:450&",
+    "https://www.homedepot.com.mx/SearchDisplay?categoryId=&storeId=10351&catalogId=10101&langId=-5&sType=SimpleSearch&resultCatEntryType=2&showResultsPage=true&searchSource=Q&pageView=&beginIndex=0&pageSize=200&searchTerm=adhesivo#facet:&productBeginIndex:0&facetLimit:&orderBy:&pageView:grid&minPrice:&maxPrice:&pageSize:200&",
   ];
 
   const accumulator = [];
@@ -305,7 +305,6 @@ router.get("/adhesivos", function (req, res) {
         const _price = $(element).find(".price").text();
         const price1 = _price.substr(_price.indexOf("$"), 100).trim();
         const price2 = price1.replace("$", "");
-        console.log(_price + "//" + price2);
         const price = price2.includes(".")
           ? price2
           : price2.substring(0, price2.length - 2) +
@@ -313,17 +312,11 @@ router.get("/adhesivos", function (req, res) {
             price2.substring(price2.length - 2);
         // discount price
         const _discountPrice = $(element).find(".old_price").text();
-        const discountPrice2 = _discountPrice
-          .substr(_discountPrice.indexOf("$") + 1, 100)
-          .trim();
-        const discountPrice = discountPrice2.includes(".")
-          ? discountPrice2
-          : discountPrice2.substring(0, discountPrice2.length - 2) +
-            "." +
-            discountPrice2.substring(discountPrice2.length - 2);
+        const discountPrice1 = _discountPrice.trim();
+        const discountPrice2 = discountPrice1.replace("Antes:", "");
+        const discountPrice = discountPrice2.replace("$", "");
         // hasDiscount
         const hasDiscount = discountPrice ? true : false;
-
         // const name = $(element).children("a").text();
         // const _prices = $(element).find(".product-price").text();
         // push to the results
@@ -338,7 +331,7 @@ router.get("/adhesivos", function (req, res) {
       // push to the acc before going to the next page
       accumulator.push(...results);
       // send response to the client
-      res.send(accumulator.slice(1, 10));
+      res.send(accumulator);
     })
     .catch((err) => {
       console.log("@error", err);
