@@ -99,7 +99,7 @@ const Home = () => {
     <Container>
       {/* title */}
       <Fade>
-        <h1 className="mt-0 mt-md-4 display-3" style={{ fontWeight: 700 }}>
+        <h1 className="mt-0 mt-md-2 display-3" style={{ fontWeight: 700 }}>
           Web Scraping
         </h1>
       </Fade>
@@ -216,9 +216,9 @@ const Home = () => {
                     {prices.map((p, idx) => {
                       return (
                         <tr key={idx}>
-                          <td>{p.type}</td>
-                          <td>{p.brand}</td>
-                          <td>
+                          <td className="align-middle">{p.type}</td>
+                          <td className="align-middle">{p.brand}</td>
+                          <td className="align-middle">
                             {p.name}
                             {p.hasDiscount ? (
                               <i
@@ -227,8 +227,10 @@ const Home = () => {
                               />
                             ) : null}
                           </td>
-                          <td>{p.price}</td>
-                          <td>{p.discountPrice ? p.discountPrice : null}</td>
+                          <td className="text-right align-middle">{p.price}</td>
+                          <td className="text-right align-middle">
+                            {p.discountPrice ? p.discountPrice : null}
+                          </td>
                         </tr>
                       );
                     })}

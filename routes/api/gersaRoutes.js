@@ -24,7 +24,8 @@ router.get("/calentadores", function (req, res) {
       // With cheerio, look at each award-winning site, enclosed in "figure" tags with the class name "site"
       $("div.product-info").each((i, element) => {
         const name = $(element).children().first().text();
-        const price = $(element).find(".precio").text();
+        const _price = $(element).find(".precio").text();
+        const price = _price.substr(_price.indexOf("$") + 1, 100).trim();
         // push to the results
         results.push({
           type: "De depósito",
@@ -45,7 +46,8 @@ router.get("/calentadores", function (req, res) {
       // With cheerio, look at each award-winning site, enclosed in "figure" tags with the class name "site"
       $("div.product-info").each((i, element) => {
         const name = $(element).children().first().text();
-        const price = $(element).find(".precio").text();
+        const _price = $(element).find(".precio").text();
+        const price = _price.substr(_price.indexOf("$") + 1, 100).trim();
         // push to the results
         results.push({
           type: "Instantáneos",
@@ -66,7 +68,8 @@ router.get("/calentadores", function (req, res) {
       // With cheerio, look at each award-winning site, enclosed in "figure" tags with the class name "site"
       $("div.product-info").each((i, element) => {
         const name = $(element).children().first().text();
-        const price = $(element).find(".precio").text();
+        const _price = $(element).find(".precio").text();
+        const price = _price.substr(_price.indexOf("$") + 1, 100).trim();
         // push to the results
         results.push({
           type: "De paso",
@@ -87,7 +90,8 @@ router.get("/calentadores", function (req, res) {
       // With cheerio, look at each award-winning site, enclosed in "figure" tags with the class name "site"
       $("div.product-info").each((i, element) => {
         const name = $(element).children().first().text();
-        const price = $(element).find(".precio").text();
+        const _price = $(element).find(".precio").text();
+        const price = _price.substr(_price.indexOf("$") + 1, 100).trim();
         // push to the results
         results.push({
           type: "Solares",

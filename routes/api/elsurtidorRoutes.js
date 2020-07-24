@@ -33,7 +33,7 @@ router.get("/calentadores", function (req, res) {
             ? true
             : false;
         const price1 = _prices.substr(_prices.indexOf(" "), 100);
-        const price = price1.substr(1, price1.indexOf("$")).trim();
+        const price = price1.substr(1, price1.indexOf("$") - 1).trim();
         const discountPrice = price1
           .substr(price1.indexOf("$") + 1, 100)
           .trim();
@@ -68,7 +68,7 @@ router.get("/calentadores", function (req, res) {
             ? true
             : false;
         const price1 = _prices.substr(_prices.indexOf(" "), 100);
-        const price = price1.substr(1, price1.indexOf("$")).trim();
+        const price = price1.substr(1, price1.indexOf("$") - 1).trim();
         const discountPrice = price1
           .substr(price1.indexOf("$") + 1, 100)
           .trim();
@@ -103,7 +103,7 @@ router.get("/calentadores", function (req, res) {
             ? true
             : false;
         const price1 = _prices.substr(_prices.indexOf(" "), 100);
-        const price = price1.substr(1, price1.indexOf("$")).trim();
+        const price = price1.substr(1, price1.indexOf("$") - 1).trim();
         const discountPrice = price1
           .substr(price1.indexOf("$") + 1, 100)
           .trim();

@@ -36,7 +36,7 @@ router.get("/calentadores", function (req, res) {
           }, 0) > 1
             ? true
             : false;
-        const price = _price.substr(_price.indexOf("$"), 10).trim();
+        const price = _price.substr(_price.indexOf("$") + 1, 10).trim();
         const _discountPrice = _price
           .substr(_price.indexOf("$") + 1, 100)
           .trim();
@@ -79,7 +79,7 @@ router.get("/calentadores", function (req, res) {
           }, 0) > 1
             ? true
             : false;
-        const price = _price.substr(_price.indexOf("$"), 10).trim();
+        const price = _price.substr(_price.indexOf("$") + 1, 10).trim();
         const _discountPrice = _price
           .substr(_price.indexOf("$") + 1, 100)
           .trim();
@@ -122,7 +122,7 @@ router.get("/calentadores", function (req, res) {
           }, 0) > 1
             ? true
             : false;
-        const price = _price.substr(_price.indexOf("$"), 10).trim();
+        const price = _price.substr(_price.indexOf("$") + 1, 10).trim();
         const _discountPrice = _price
           .substr(_price.indexOf("$") + 1, 100)
           .trim();
@@ -178,7 +178,7 @@ router.get("/pegazulejos", function (req, res) {
             ? true
             : false;
 
-        const price = _price.substr(_price.indexOf("$"), 10).trim();
+        const price = _price.substr(_price.indexOf("$") + 1, 10).trim();
 
         const _discountPrice = _price
           .substr(_price.indexOf("$") + 1, 100)
