@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, Container, Table, Spinner, Row, Col } from "react-bootstrap";
+import {
+  Image,
+  Button,
+  Container,
+  Table,
+  Spinner,
+  Row,
+  Col,
+} from "react-bootstrap";
 import API from "../utils/API";
 import Fade from "react-reveal/Fade";
 import ScrollButton from "../components/scrollbutton";
@@ -25,6 +33,7 @@ const Home = () => {
       .catch((err) => {
         console.log("error", err);
         alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
       });
   };
 
@@ -42,6 +51,7 @@ const Home = () => {
       .catch((err) => {
         console.log("error", err);
         alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
       });
   };
 
@@ -59,6 +69,7 @@ const Home = () => {
       .catch((err) => {
         console.log("error", err);
         alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
       });
   };
 
@@ -76,6 +87,7 @@ const Home = () => {
       .catch((err) => {
         console.log("error", err);
         alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
       });
   };
 
@@ -93,6 +105,25 @@ const Home = () => {
       .catch((err) => {
         console.log("error", err);
         alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
+      });
+  };
+
+  const scrapHomeDepotAdhesivos = () => {
+    // set selected
+    setLoading(true);
+    setSelected("HomeDepot-Adhesivos");
+
+    // scrap azulemex website
+    API.scrapHomeDepotAdhesivos()
+      .then((res) => {
+        setPrices(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Ocurrió un error al cargar los productos, intenta de nuevo");
+        window.location.reload();
       });
   };
 
@@ -119,6 +150,7 @@ const Home = () => {
             onClick={scrapAzulemexCalentadores}
             className="shadow-sm mt-2"
             size="sm"
+            disabled
           >
             Calentadores
           </Button>
@@ -128,6 +160,7 @@ const Home = () => {
             onClick={scrapAzulemexPegazulejos}
             className="shadow-sm mt-2"
             size="sm"
+            disabled
           >
             Pegazulejos
           </Button>
@@ -142,6 +175,7 @@ const Home = () => {
             onClick={scrapGersaCalentadores}
             className="shadow-sm mt-2"
             size="sm"
+            disabled
           >
             Calentadores
           </Button>
@@ -156,6 +190,7 @@ const Home = () => {
             onClick={scrapElSurtidorCalentadores}
             className="shadow-sm mt-2"
             size="sm"
+            disabled
           >
             Calentadores
           </Button>
@@ -170,8 +205,19 @@ const Home = () => {
             onClick={scrapHomeDepotCalentadores}
             className="shadow-sm mt-2"
             size="sm"
+            disabled
           >
             Calentadores
+          </Button>
+          <Button
+            variant="outline-info"
+            active={selected === "HomeDepot-Adhesivos" ? true : false}
+            onClick={scrapHomeDepotAdhesivos}
+            className="shadow-sm mt-2"
+            size="sm"
+            disabled
+          >
+            Adhesivos
           </Button>
         </Col>
         {/* table */}
@@ -238,7 +284,16 @@ const Home = () => {
                   </tbody>
                 </Table>
               </>
-            ) : null}
+            ) : (
+              <div className="my-4 text-center">
+                <Image
+                  src="/images/pickaxe.png"
+                  height="200"
+                  width="200"
+                  style={{ opacity: "0.1", marginTop: "90px" }}
+                />
+              </div>
+            )}
           </div>
         </Col>
       </Row>

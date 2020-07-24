@@ -25,4 +25,6 @@ export default {
   // ==============================================
   scrapHomeDepotCalentadores: () =>
     axios.get("/api/scrap/homedepot/calentadores"),
+
+  scrapHomeDepotAdhesivos: () => axios.get("/api/scrap/homedepot/adhesivos"),
 };
